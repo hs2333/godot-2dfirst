@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://c5ynynhpnqjfq"]
+
+[ext_resource type="Script" uid="uid://d00jjht1foeo4" path="res://mob2.gd" id="1_lu5gn"]
+[ext_resource type="Texture2D" uid="uid://b0u2femtm6uvp" path="res://art/enemyFlyingAlt_1.png" id="2_so8yy"]
+[ext_resource type="Texture2D" uid="uid://wcmfjlt31306" path="res://art/enemyFlyingAlt_2.png" id="3_31fw5"]
+[ext_resource type="Texture2D" uid="uid://dallj6lc5psxx" path="res://art/enemySwimming_1.png" id="4_ibqii"]
+[ext_resource type="Texture2D" uid="uid://cgu1784y20hjb" path="res://art/enemySwimming_2.png" id="5_gtgob"]
+[ext_resource type="Texture2D" uid="uid://6sh8nr18guec" path="res://art/enemyWalking_1.png" id="6_4x3dk"]
+[ext_resource type="Texture2D" uid="uid://dkqnhmtrvsmgw" path="res://art/enemyWalking_2.png" id="7_ekrub"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j4jy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_so8yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_31fw5")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ibqii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gtgob")
+}],
+"loop": 1,
+"name": &"swim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4x3dk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ekrub")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mv3sr"]
+radius = 37.0
+height = 102.0
+
+[node name="Mob" type="RigidBody2D" unique_id=1751477454 groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_lu5gn")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1245755975]
+modulate = Color(0.101960786, 1, 1, 1)
+self_modulate = Color(1, 0.6509804, 1, 1)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_j4jy8")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1031037918]
+visible = false
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_mv3sr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1929984957]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1205291793]
